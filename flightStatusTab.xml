@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="FlightStatusTab Suite" parallel="tests" thread-count="1">
+
+ <!--  <test name="Chrome Test">
+  <parameter name="browser" value="chrome" />
+  <parameter name="url" value="https://www.delta.com" />
+    <classes>
+      <class name="deltaAirlines.delta_automation.BookTripTab" />
+    </classes>
+  </test> -->
+  
+   <test name="FlightStatusTab Firefox Test">
+  <parameter name="browser" value="firefox" />
+  <parameter name="url" value="https://www.delta.com" />
+    <classes>
+      <class name="com.deltaAirlines.delta_automation.FlightStatusTab_Test" />
+    </classes>
+  </test>
+  
+</suite>

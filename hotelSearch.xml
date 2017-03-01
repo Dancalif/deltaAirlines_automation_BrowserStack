@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="HotelSearch Suite" parallel="tests" thread-count="1">
+
+ <!--  <test name="Chrome Test">
+  <parameters>
+  <parameter name="browser" value="chrome" />
+  <parameter name="url" value="https://www.delta.com" />
+  </parameters>
+    <classes>
+      <class name="deltaAirlines.delta_automation.BookTripTab" />
+    </classes>
+  </test> -->
+   <test name="HotelSearch Firefox Test">
+
+  <parameter name="browser" value="firefox" />
+  <parameter name="url" value="https://www.delta.com" />
+
+    <classes>
+      <class name="com.deltaAirlines.delta_automation.HotelSearch_Test" />
+    </classes>
+  </test>
+
+</suite>
