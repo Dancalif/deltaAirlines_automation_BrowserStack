@@ -19,43 +19,43 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class WebUtil {
 
 	// to wait for element to be visible
-	public static void waitForElementVisible(WebDriver driver, By locator) {
+	public static void waitForElementVisible(WebDriver driver, By element) {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 	}
 
 	// to verify if element is displayed
-	public static boolean ifElementDisplayed(WebDriver driver, By locator) {
-		boolean ifDisplayed = driver.findElement(locator).isDisplayed();
+	public static boolean ifElementDisplayed(WebDriver driver, By element) {
+		boolean ifDisplayed = driver.findElement(element).isDisplayed();
 		return ifDisplayed;
 	}
 
 	// to click
-	public static void click(WebDriver driver, By locator) {
-		WebElement clickableElement = driver.findElement(locator);
+	public static void click(WebDriver driver, By element) {
+		WebElement clickableElement = driver.findElement(element);
 		clickableElement.click();
 	}
 
 	// to enter
-	public static void input(WebDriver driver, String input, By locator) {
-		WebElement inputField = driver.findElement(locator);
+	public static void input(WebDriver driver, String input, By element) {
+		WebElement inputField = driver.findElement(element);
 		inputField.clear();
 		inputField.sendKeys(input);
 	}
 
 	// to get hidden element visible to perform the actions with it
-	public static void getElementVisible(WebDriver driver, By locator) throws Exception {
-		WebElement elmentToBeVisible = driver.findElement(locator);
+	public static void getElementVisible(WebDriver driver, By element) throws Exception {
+		WebElement elmentToBeVisible = driver.findElement(element);
 		elmentToBeVisible.sendKeys(Keys.PAGE_DOWN);
 		Thread.sleep(1000);
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 30);
-			wait.until(ExpectedConditions.elementToBeClickable(locator));
+			wait.until(ExpectedConditions.elementToBeClickable(element));
 		} catch (Exception e) {
 			elmentToBeVisible.sendKeys(Keys.PAGE_UP);
 			Thread.sleep(1000);
 			WebDriverWait wait = new WebDriverWait(driver, 30);
-			wait.until(ExpectedConditions.elementToBeClickable(locator));
+			wait.until(ExpectedConditions.elementToBeClickable(element));
 		}
 	}
 
@@ -79,20 +79,19 @@ public class WebUtil {
 	}
 
 	// to verify if element exists
-	public static void verifyIfElementExists(WebDriver driver, By locator, String message) {
-		WebElement elementToBeFound = driver.findElement(locator);
+	public static void verifyIfElementExists(WebDriver driver, By element, String message) {
+		WebElement elementToBeFound = driver.findElement(element);
 		boolean ifExists = elementToBeFound.isDisplayed();
 		org.testng.Assert.assertTrue(ifExists, message);
 	}
 
-	public static List<WebElement> createListOfElements(WebDriver driver, By locator) {
-		List<WebElement> listOfElements = driver.findElements(locator);
+	public static List<WebElement> createListOfElements(WebDriver driver, By element) {
+		List<WebElement> listOfElements = driver.findElements(element);
 		return listOfElements;
-
 	}
 
-	public static String myParser(WebDriver driver, By locator, String myPattern) {
-		String parsedItem = driver.findElement(locator).getText();
+	public static String myParser(WebDriver driver, By element, String myPattern) {
+		String parsedItem = driver.findElement(element).getText();
 		Pattern pattern = Pattern.compile(myPattern);
 		Matcher matcher = pattern.matcher(parsedItem);
 		while (matcher.find()) {
@@ -101,14 +100,19 @@ public class WebUtil {
 		return parsedItem;
 	}
 
-	public static void mouseOver(WebDriver driver, By locator) {
+	public static void mouseOver(WebDriver driver, By element) {
 		Actions action = new Actions(driver);
-		action.moveToElement(driver.findElement(locator)).build().perform();
-
+		action.moveToElement(driver.findElement(element)).build().perform();
 	}
 
-	public static void clearTextfield(WebDriver driver, By locator) {
-		WebElement elementToClear = driver.findElement(locator);
+	public static void clearTextfield(WebDriver driver, By element) {
+		WebElement elementToClear = driver.findElement(element);
 		elementToClear.clear();
+	}
+
+	public static int convertStringToInt(WebDriver driver, By element) {
+		String totalHotels = driver.findElement(element).getText();
+		int totalNumHotels = Integer.parseInt(totalHotels);
+		return totalNumHotels;
 	}
 }
