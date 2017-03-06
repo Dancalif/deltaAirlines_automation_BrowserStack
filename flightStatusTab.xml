@@ -3,17 +3,19 @@
 
 <suite name="FlightStatusTab Suite" parallel="tests" thread-count="1">
 
- <!--  <test name="Chrome Test">
+ <test name="Chrome Test">
   <parameter name="browser" value="chrome" />
   <parameter name="url" value="https://www.delta.com" />
+  <parameter name="flightNumber" value="2049" />
     <classes>
-      <class name="deltaAirlines.delta_automation.BookTripTab" />
+      <class name="com.deltaAirlines.delta_automation.FlightStatusTab_Test" />
     </classes>
-  </test> -->
+  </test>
   
    <test name="FlightStatusTab Firefox Test">
   <parameter name="browser" value="firefox" />
   <parameter name="url" value="https://www.delta.com" />
+  <parameter name="flightNumber" value="2049" />
     <classes>
       <class name="com.deltaAirlines.delta_automation.FlightStatusTab_Test" />
     </classes>

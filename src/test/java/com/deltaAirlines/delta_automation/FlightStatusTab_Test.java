@@ -6,25 +6,24 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import PageObjects.FlightStatusTab_POF;
 
 public class FlightStatusTab_Test extends Main_Test {
 	@Test(enabled = true)
-	public void verifyFlightStatusResuts() throws ParseException, InterruptedException {
+	@Parameters({ "flightNumber" })
+	public void verifyFlightStatusResuts(String flightNumber) throws ParseException, InterruptedException {
 		FlightStatusTab_POF flightStatusTab = new FlightStatusTab_POF();
-		// Valid flight number, given by requirements
-		String flightNumber = "2049";
 		// Navigate to Flight Status tab page
 		flightStatusTab.clickFlightStatusTab(driver);
 		// To click on flight date drop down menu
 		flightStatusTab.clickFlightDateOptionMenu(driver);
 		// Logic to randomly select flight date option
 		// Collect the web elements to select: Flight Date Options
-		WebElement myFlightDateOption = flightStatusTab.clickRandomElementFromList(driver);
+		flightStatusTab.clickRandomElementFromList(driver);
 		// Retrieving the selected flight date
 		String mySelectedDate = flightStatusTab.parseSelectedFlightDates(driver);
 		// Entering flight number
