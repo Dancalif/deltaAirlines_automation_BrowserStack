@@ -1,0 +1,33 @@
+{
+  "server": "hub-cloud.browserstack.com",
+  "user": "denisumanets2",
+  "key": "Z5cQzv3CsR93CnsMLF1P",
+
+  "capabilities": {
+    "browserstack.debug": true
+  },
+
+  "environments": {
+    "Firefox": {
+    "os": "Windows",
+    "os_version": "8.1",
+    "browser": "Firefox",
+    "browser_version": "48.0",
+    "resolution": "1024x768"
+  },
+  	"Chrome": {
+    "os": "Windows",
+    "os_version": "8.1",
+    "browser": "Chrome",
+    "browser_version": "54.0",
+    "resolution": "1024x768"
+  },
+  	 "IE": {
+    "os": "Windows",
+    "os_version": "8.1",
+    "browser": "IE",
+    "browser_version": "11.0",
+    "resolution": "1024x768"
+  }
+}
+}

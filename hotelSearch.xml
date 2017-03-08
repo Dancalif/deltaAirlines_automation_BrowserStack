@@ -3,8 +3,9 @@
 
 <suite name="HotelSearch Suite" parallel="tests" thread-count="1">
 
- <test name="Chrome Test">
-  <parameter name="browser" value="chrome" />
+ <test name="HotelSearch Chrome Test">
+ <parameter name="conf" value="conf"/>
+  <parameter name="environment" value="Chrome"/>
   <parameter name="url" value="https://www.delta.com" />
   <parameter name ="daysFromCurrentDate" value="14" />
   <parameter name ="inputLocation" value="BOM" />
@@ -13,14 +14,24 @@
       <class name="com.deltaAirlines.delta_automation.HotelSearch_Test" />
     </classes>
   </test>
-  
-   <test name="HotelSearch Firefox Test">
-  <parameter name="browser" value="firefox" />
+ <test name="HotelSearch Firefox Test">
+  <parameter name="conf" value="conf"/>
+  <parameter name="environment" value="Firefox"/>
   <parameter name="url" value="https://www.delta.com" />
   <parameter name ="daysFromCurrentDate" value="14" />
    <parameter name ="inputLocation" value="BOM" />
   <parameter name ="locationInDropdown" value="Mumbai, India, IN (BOM)" />
-
+    <classes>
+      <class name="com.deltaAirlines.delta_automation.HotelSearch_Test" />
+    </classes>
+  </test>
+   <test name="HotelSearch IE Test">
+  <parameter name="conf" value="conf"/>
+  <parameter name="environment" value="IE"/>
+  <parameter name="url" value="https://www.delta.com" />
+  <parameter name ="daysFromCurrentDate" value="14" />
+   <parameter name ="inputLocation" value="BOM" />
+  <parameter name ="locationInDropdown" value="Mumbai, India, IN (BOM)" />
     <classes>
       <class name="com.deltaAirlines.delta_automation.HotelSearch_Test" />
     </classes>
