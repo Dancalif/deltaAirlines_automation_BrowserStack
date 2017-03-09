@@ -1,7 +1,7 @@
 {
   "server": "hub-cloud.browserstack.com",
-  "user": "denisumanets2",
-  "key": "Z5cQzv3CsR93CnsMLF1P",
+  "user": "Your Username",
+  "key": "Your Access Key",
 
   "capabilities": {
     "browserstack.debug": true
