@@ -1,7 +1,7 @@
 {
   "server": "hub-cloud.browserstack.com",
-  "user": "Your Username",
-  "key": "Your Access Key",
+  "user": "Your BrowserStack Username",
+  "key": "Your BrowserStack Access Key",
 
   "capabilities": {
     "browserstack.debug": true

@@ -2,27 +2,42 @@ package PageObjects;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.testng.Assert;
 
 import com.deltaAirlines.delta_automation.Util.WebUtil;
 
 public class HotelSearch_POF {
 
-	By shopDropdownMenu = By.xpath(".//*[@id='dropDownMenubar']/ul/li[1]/div[1]/a");
-	By hotelOption = By.xpath("//a[contains(@href, '/content/www/en_US/shop/hotels.html')]");
-	By hotelLocationTextfield = By.xpath(".//*[@id='hotelLocation']");
-	By checkInDateTextfield = By.xpath(".//*[@id='hotelCheckInDate']");
-	By checkOutDateTextfield = By.xpath(".//*[@id='hotelCheckOutDate']");
-	By roomsDropdownMenu = By.xpath(".//*[@id='hotelNumberOfRooms-button']/span[1]");
-	By adultsDropdownMenu = By.xpath(".//*[@id='hotelNumberOfAdults-button']/span[1]");
-	By findHotelsButton = By.xpath(".//*[@id='btnSubmit']");
-	By numberOfRoomsDropdown = By.xpath(".//*[@id='hotelNumberOfRooms-menu'] //li");
-	By totalNumberOfHotels = By.xpath(".//*[@id='totalProducts']");
-	By hotelSearchResultsTitle = By.xpath(".//*[@id='searchHotelForm']/h2");
-	By hotelLocationsDropdownMenu = By.xpath(".//*[@id='ui-id-3']//li");
+	@FindBy(how = How.XPATH, using = ".//*[@id='dropDownMenubar']/ul/li[1]/div[1]/a")
+	WebElement shopDropdownMenu;
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/content/www/en_US/shop/hotels.html')]")
+	WebElement hotelOption;
+	@FindBy(how = How.XPATH, using = ".//*[@id='hotelLocation']")
+	WebElement hotelLocationTextfield;
+	@FindBy(how = How.XPATH, using = ".//*[@id='hotelCheckInDate']")
+	WebElement checkInDateTextfield;
+	@FindBy(how = How.XPATH, using = ".//*[@id='hotelCheckOutDate']")
+	WebElement checkOutDateTextfield;
+	@FindBy(how = How.XPATH, using = ".//*[@id='hotelNumberOfRooms-button']/span[1]")
+	WebElement roomsDropdownMenu;
+	@FindBy(how = How.XPATH, using = ".//*[@id='hotelNumberOfAdults-button']/span[1]")
+	List<WebElement> adultsDropdownMenu;
+	@FindBy(how = How.XPATH, using = ".//*[@id='btnSubmit']")
+	WebElement findHotelsButton;
+	@FindBy(how = How.XPATH, using = ".//*[@id='hotelNumberOfRooms-menu'] //li")
+	List<WebElement> numberOfRoomsDropdown;
+	@FindBy(how = How.XPATH, using = ".//*[@id='totalProducts']")
+	WebElement totalNumberOfHotels;
+	@FindBy(how = How.XPATH, using = ".//*[@id='searchHotelForm']/h2")
+	WebElement hotelSearchResultsTitle;
+	@FindBy(how = How.XPATH, using = ".//*[@id='ui-id-3']//li")
+	List<WebElement> hotelLocationsDropdownMenu;
+	@FindBy(xpath = ".//*[@id='hotelNumberOfAdults-button']/span[1]")
+	WebElement numberOfAdultsButton;
 
 	// Mouse over on shop tab
 	public void mouseOverOnShopTab(WebDriver driver) {
@@ -54,10 +69,10 @@ public class HotelSearch_POF {
 		WebUtil.click(driver, roomsDropdownMenu);
 	}
 
-	// Select Number OF Adults
+	// Select Number of Adults
 	public void selectNumberOFAdults(WebDriver driver) {
 		try {
-			WebUtil.click(driver, adultsDropdownMenu);
+			WebUtil.click(driver, numberOfAdultsButton);
 			List<WebElement> adults = WebUtil.createListOfElements(driver, adultsDropdownMenu);
 			int totalAdults = 1 + WebUtil.randNumber(7);
 			adults.get(totalAdults).click();
@@ -92,8 +107,7 @@ public class HotelSearch_POF {
 	// Wait For Hotel Search Results Title
 	public void waitForHotelSearchResultsTitle(WebDriver driver) {
 		WebUtil.waitForElementVisible(driver, hotelSearchResultsTitle);
-		Assert.assertEquals(driver.findElement(hotelSearchResultsTitle).getText().toLowerCase(),
-				"hotel search results");
+		Assert.assertEquals(hotelSearchResultsTitle.getText().toLowerCase(), "hotel search results");
 	}
 
 	// Get String Parse To Int

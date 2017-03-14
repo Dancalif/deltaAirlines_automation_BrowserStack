@@ -2,22 +2,31 @@ package PageObjects;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import com.deltaAirlines.delta_automation.Util.WebUtil;
 
 public class FlightStatusTab_POF {
 
-	By flightStatusTab = By.xpath(".//*[@id='navFlightStatus']");
-	By flightDateDropdown = By.xpath(".//*[@id='FLIFO_flightDate-button']/span[1]");
-	By flightDateOptionsElements = By.xpath(".//*[@id='FLIFO_flightDate-menu'] //li");
-	By flightNumberTextfield = By.xpath(".//*[@id='FLIFO_flightNumber']");
-	By viewStatusButton = By.xpath(".//*[@id='FLIFO_go']");
-	By flightNumberTitle = By.xpath(".//*[@id='maincontent']/div/div[2]/div/div[1]/h2");
-	By selectedFlightDates = By.xpath(".//*[@id='FLIFO_flightDate-button']/span[2]");
-	By returnedFlightDates = By.xpath(".//*[@id='tmOutboundDate']");
+	@FindBy(how = How.XPATH, using = ".//*[@id='navFlightStatus']")
+	WebElement flightStatusTab;
+	@FindBy(how = How.XPATH, using = ".//*[@id='FLIFO_flightDate-button']/span[1]")
+	WebElement flightDateDropdown;
+	@FindBy(how = How.XPATH, using = ".//*[@id='FLIFO_flightDate-menu'] //li")
+	List<WebElement> flightDateOptionsElements;
+	@FindBy(how = How.XPATH, using = ".//*[@id='FLIFO_flightNumber']")
+	WebElement flightNumberTextfield;
+	@FindBy(how = How.XPATH, using = ".//*[@id='FLIFO_go']")
+	WebElement viewStatusButton;
+	@FindBy(how = How.XPATH, using = ".//*[@id='maincontent']/div/div[2]/div/div[1]/h2")
+	WebElement flightNumberTitle;
+	@FindBy(how = How.XPATH, using = ".//*[@id='FLIFO_flightDate-button']/span[2]")
+	WebElement selectedFlightDates;
+	@FindBy(how = How.XPATH, using = ".//*[@id='tmOutboundDate']")
+	WebElement returnedFlightDates;
 
 	// Click Flight Status Tab
 	public void clickFlightStatusTab(WebDriver driver) throws InterruptedException {

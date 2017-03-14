@@ -1,5 +1,6 @@
 package com.deltaAirlines.delta_automation;
 
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -7,11 +8,12 @@ import org.testng.annotations.Test;
 import PageObjects.BookTripTab_POF;;
 
 public class BookTripTab_Test extends Main_Test {
+
 	@Test(enabled = true)
 	@Parameters({ "stateWantedFrom", "airportWantedFrom", "countryWantedTo", "airportWantedTo", "daysFromCurrentDate" })
 	public void verifyFlightSearchResuts(String stateWantedFrom, String airportWantedFrom, String countryWantedTo,
 			String airportWantedTo, int daysFromCurrentDate) throws Exception {
-		BookTripTab_POF bookTripTab = new BookTripTab_POF();
+		BookTripTab_POF bookTripTab = PageFactory.initElements(driver, BookTripTab_POF.class);
 		// To verify if Find Flight button is displayed
 		bookTripTab.verifyFindFlightSubmitButton(driver);
 		// Entering From and To destinations

@@ -9,8 +9,8 @@
   <parameter name="url" value="https://www.delta.com" />
   <parameter name ="stateWantedFrom" value="California" />
   <parameter name ="airportWantedFrom" value="SFO" />
-   <parameter name ="countryWantedTo" value="India" />
-  <parameter name ="airportWantedTo" value="BOM" />
+   <parameter name ="countryWantedTo" value="Argentina" />
+  <parameter name ="airportWantedTo" value="EZE" />
   <parameter name ="daysFromCurrentDate" value="14" />
     <classes>
       <class name="com.deltaAirlines.delta_automation.BookTripTab_Test" />
@@ -22,8 +22,8 @@
   <parameter name="url" value="https://www.delta.com" />
   <parameter name ="stateWantedFrom" value="California" />
   <parameter name ="airportWantedFrom" value="SFO" />
-  <parameter name ="countryWantedTo" value="India" />
-  <parameter name ="airportWantedTo" value="BOM" />
+  <parameter name ="countryWantedTo" value="Argentina" />
+  <parameter name ="airportWantedTo" value="EZE" />
   <parameter name ="daysFromCurrentDate" value="20" />
     <classes>
       <class name="com.deltaAirlines.delta_automation.BookTripTab_Test" />
@@ -35,8 +35,8 @@
   <parameter name="url" value="https://www.delta.com" />
   <parameter name ="stateWantedFrom" value="California" />
   <parameter name ="airportWantedFrom" value="SFO" />
-  <parameter name ="countryWantedTo" value="India" />
-  <parameter name ="airportWantedTo" value="BOM" />
+  <parameter name ="countryWantedTo" value="Argentina" />
+  <parameter name ="airportWantedTo" value="EZE" />
   <parameter name ="daysFromCurrentDate" value="20" />
     <classes>
       <class name="com.deltaAirlines.delta_automation.BookTripTab_Test" />

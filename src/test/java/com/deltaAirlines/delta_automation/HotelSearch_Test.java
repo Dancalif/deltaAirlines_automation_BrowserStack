@@ -1,5 +1,6 @@
 package com.deltaAirlines.delta_automation;
 
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -7,11 +8,12 @@ import org.testng.annotations.Test;
 import PageObjects.HotelSearch_POF;
 
 public class HotelSearch_Test extends Main_Test {
+
 	@Test(enabled = true)
 	@Parameters({ "daysFromCurrentDate", "inputLocation", "locationInDropdown" })
 	public void verifyHotelSearch(int daysFromCurrentDate, String inputLocation, String locationInDropdown)
 			throws InterruptedException {
-		HotelSearch_POF hotelSearch = new HotelSearch_POF();
+		HotelSearch_POF hotelSearch = PageFactory.initElements(driver, HotelSearch_POF.class);
 		// Getting drop down under shop upper tab
 		hotelSearch.mouseOverOnShopTab(driver);
 		// Clicking Hotels option

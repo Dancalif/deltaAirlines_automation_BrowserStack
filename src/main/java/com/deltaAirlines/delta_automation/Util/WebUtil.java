@@ -19,40 +19,37 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class WebUtil {
 
 	// to wait for element to be visible
-	public static void waitForElementVisible(WebDriver driver, By element) {
+	public static void waitForElementVisible(WebDriver driver, WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
 	// to verify if element is displayed
-	public static boolean ifElementDisplayed(WebDriver driver, By element) {
-		boolean ifDisplayed = driver.findElement(element).isDisplayed();
+	public static boolean ifElementDisplayed(WebDriver driver, WebElement element) {
+		boolean ifDisplayed = element.isDisplayed();
 		return ifDisplayed;
 	}
 
 	// to click
-	public static void click(WebDriver driver, By element) {
-		WebElement clickableElement = driver.findElement(element);
-		clickableElement.click();
+	public static void click(WebDriver driver, WebElement element) {
+		element.click();
 	}
 
 	// to enter
-	public static void input(WebDriver driver, String input, By element) {
-		WebElement inputField = driver.findElement(element);
-		inputField.clear();
-		inputField.sendKeys(input);
+	public static void input(WebDriver driver, String input, WebElement element) {
+		element.clear();
+		element.sendKeys(input);
 	}
 
 	// to get hidden element visible to perform the actions with it
-	public static void getElementVisible(WebDriver driver, By element) throws Exception {
-		WebElement elmentToBeVisible = driver.findElement(element);
-		elmentToBeVisible.sendKeys(Keys.PAGE_DOWN);
+	public static void getElementVisible(WebDriver driver, WebElement element) throws Exception {
+		element.sendKeys(Keys.PAGE_DOWN);
 		Thread.sleep(1000);
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 		} catch (Exception e) {
-			elmentToBeVisible.sendKeys(Keys.PAGE_UP);
+			element.sendKeys(Keys.PAGE_UP);
 			Thread.sleep(1000);
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -85,13 +82,13 @@ public class WebUtil {
 		org.testng.Assert.assertTrue(ifExists, message);
 	}
 
-	public static List<WebElement> createListOfElements(WebDriver driver, By element) {
-		List<WebElement> listOfElements = driver.findElements(element);
+	public static List<WebElement> createListOfElements(WebDriver driver, List<WebElement> element) {
+		List<WebElement> listOfElements = element;
 		return listOfElements;
 	}
 
-	public static String myParser(WebDriver driver, By element, String myPattern) {
-		String parsedItem = driver.findElement(element).getText();
+	public static String myParser(WebDriver driver, WebElement element, String myPattern) {
+		String parsedItem = element.getText();
 		Pattern pattern = Pattern.compile(myPattern);
 		Matcher matcher = pattern.matcher(parsedItem);
 		while (matcher.find()) {
@@ -100,18 +97,17 @@ public class WebUtil {
 		return parsedItem;
 	}
 
-	public static void mouseOver(WebDriver driver, By element) {
+	public static void mouseOver(WebDriver driver, WebElement element) {
 		Actions action = new Actions(driver);
-		action.moveToElement(driver.findElement(element)).build().perform();
+		action.moveToElement(element).build().perform();
 	}
 
-	public static void clearTextfield(WebDriver driver, By element) {
-		WebElement elementToClear = driver.findElement(element);
-		elementToClear.clear();
+	public static void clearTextfield(WebDriver driver, WebElement element) {
+		element.clear();
 	}
 
-	public static int convertStringToInt(WebDriver driver, By element) {
-		String totalHotels = driver.findElement(element).getText();
+	public static int convertStringToInt(WebDriver driver, WebElement element) {
+		String totalHotels = element.getText();
 		int totalNumHotels = Integer.parseInt(totalHotels);
 		return totalNumHotels;
 	}

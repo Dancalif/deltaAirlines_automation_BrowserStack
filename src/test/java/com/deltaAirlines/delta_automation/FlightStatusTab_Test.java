@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -13,10 +14,11 @@ import org.testng.annotations.Test;
 import PageObjects.FlightStatusTab_POF;
 
 public class FlightStatusTab_Test extends Main_Test {
+
 	@Test(enabled = true)
 	@Parameters({ "flightNumber" })
 	public void verifyFlightStatusResuts(String flightNumber) throws ParseException, InterruptedException {
-		FlightStatusTab_POF flightStatusTab = new FlightStatusTab_POF();
+		FlightStatusTab_POF flightStatusTab = PageFactory.initElements(driver, FlightStatusTab_POF.class);
 		// Navigate to Flight Status tab page
 		flightStatusTab.clickFlightStatusTab(driver);
 		// To click on flight date drop down menu

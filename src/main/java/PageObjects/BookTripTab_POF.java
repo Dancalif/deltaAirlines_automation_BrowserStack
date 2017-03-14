@@ -4,33 +4,48 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.testng.Assert;
 
 import com.deltaAirlines.delta_automation.Util.WebUtil;
 
 public class BookTripTab_POF {
-	// int days = 14;
+
 	boolean booleanFlag = false;
 	boolean ifDisplayed = false;
 
-	By findFlightsButton = By.id("findFlightsSubmit");
-	By bookATripTab = By.xpath(".//*[@id='navBookTrip']");
-	By departureDateTextfield = By.xpath(".//*[@id='departureDate']");
-	By returnDateTextfield = By.xpath(".//*[@id='returnDate']");
-	By paginationFlightResultsBottom = By.xpath(".//*[@id='_paginationBottom_tmplHolder']/ul/li[1]/span");
-	By bookATripTitle = By.xpath(".//*[@id='_tripSummaryHeader_tmplHolder']/div[1]/h1");
-	By statesList = By.xpath(".//*[@id='scroll_stateProvince'] // div // div // ul // li");
-	By statesAirportList = By.xpath(".//*[@id='scroll_stateProvinceAirport'] // div // ul // li");
-	By countriesAirportsList = By.xpath(".//*[@id='country_button']/div[4] // div // ul // li");
-	By countryList = By.xpath(".//*[@id='scroll_country'] // div // ul // li");
-	By fromTextfield = By.xpath(".//*[@id='srcCityLookup']");
-	By toTextfield = By.xpath(".//*[@id='destCityLookup']");
-	By usAndCanada = By.xpath(".//*[@id='ui-id-4']");
-	By country = By.xpath(".//*[@id='ui-id-3']");
+	@FindBy(how = How.ID, using = "findFlightsSubmit")
+	WebElement findFlightsButton;
+	@FindBy(how = How.XPATH, using = ".//*[@id='navBookTrip']")
+	WebElement bookATripTab;
+	@FindBy(how = How.XPATH, using = ".//*[@id='departureDate']")
+	WebElement departureDateTextfield;
+	@FindBy(how = How.XPATH, using = ".//*[@id='returnDate']")
+	WebElement returnDateTextfield;
+	@FindBy(how = How.XPATH, using = ".//*[@id='_paginationBottom_tmplHolder']/ul/li[1]/span")
+	WebElement paginationFlightResultsBottom;
+	@FindBy(how = How.XPATH, using = ".//*[@id='_tripSummaryHeader_tmplHolder']/div[1]/h1")
+	WebElement bookATripTitle;
+	@FindBy(how = How.XPATH, using = ".//*[@id='scroll_stateProvince'] // div // div // ul // li")
+	List<WebElement> statesList;
+	@FindBy(how = How.XPATH, using = ".//*[@id='scroll_stateProvinceAirport'] // div // ul // li")
+	List<WebElement> statesAirportList;
+	@FindBy(how = How.XPATH, using = ".//*[@id='country_button']/div[4] // div // ul // li")
+	List<WebElement> countriesAirportsList;
+	@FindBy(how = How.XPATH, using = ".//*[@id='scroll_country'] // div // ul // li")
+	List<WebElement> countryList;
+	@FindBy(how = How.XPATH, using = ".//*[@id='srcCityLookup']")
+	WebElement fromTextfield;
+	@FindBy(how = How.XPATH, using = ".//*[@id='destCityLookup']")
+	WebElement toTextfield;
+	@FindBy(how = How.XPATH, using = ".//*[@id='ui-id-4']")
+	WebElement usAndCanada;
+	@FindBy(how = How.XPATH, using = ".//*[@id='ui-id-3']")
+	WebElement country;
 
 	public void verifyFindFlightSubmitButton(WebDriver driver) {
 		// To verify if Find Flight button is displayed
@@ -130,7 +145,7 @@ public class BookTripTab_POF {
 	public int verifyFlightsSearchResult(WebDriver driver) throws InterruptedException {
 		int totalSearchResults = 0;
 		Thread.sleep(2000);
-		String searchResults = driver.findElement(paginationFlightResultsBottom).getText();
+		String searchResults = paginationFlightResultsBottom.getText();
 		Pattern pattern = Pattern.compile("of (.*?) flight");
 		Matcher matcher = pattern.matcher(searchResults);
 		while (matcher.find()) {

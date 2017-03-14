@@ -17,15 +17,15 @@ import org.testng.annotations.BeforeMethod;
 import com.browserstack.local.Local;
 
 public class Main_Test {
-	public WebDriver driver;
-	private Local l;
+	static WebDriver driver;
+	private static Local l;
 
 	@BeforeMethod(alwaysRun = true)
 	@org.testng.annotations.Parameters(value = { "conf", "environment", "url" })
-	public void setUp(String conf, String environment, String url) throws Exception {
+	public static void setUp(String conf, String environment, String url) throws Exception {
 		JSONParser parser = new JSONParser();
 		JSONObject config = (JSONObject) parser.parse(new FileReader(
-				"/Users/dan/Dropbox/Delta_workspace/deltaAirlines_automation_BrowserStack/src/test/java/resources/"
+				"/Users/dan/Dropbox/Portfolio_workspace/deltaAirlines_automation_BrowserStack/src/test/java/resources/"
 						+ conf));
 		JSONObject envs = (JSONObject) config.get("environments");
 
